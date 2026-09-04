@@ -1,11 +1,13 @@
-/*Q2. Write a menu driven program for Date in a CPP language using structure and also using class. 
-Date is having data members day, month, year. Implement the following functions. 
-void initDate(); 
-void printDateOnConsole(); 
-void acceptDateFromConsole(); 
+/*Q2. Write a menu driven program for Date in a CPP language using structure and also using class.
+Date is having data members day, month, year. Implement the following functions.
+void initDate();
+void printDateOnConsole();
+void acceptDateFromConsole();
 bool isLeapYear();*/
 
-#include<stdio.h>
+#include <iostream>
+
+using namespace std;
 
 struct Date{
    int date ;
@@ -14,30 +16,30 @@ struct Date{
 };
 
 void initDate(struct Date* ptrDate){
-     
+
         ptrDate->date=10;
-        ptrDate->month=05;
+        ptrDate->month=5;
         ptrDate->year=2004;
 }
 
 void acceptDateFromConsole(struct Date* ptrDate)
 {
-          printf("Enter a date : ");
-          scanf("%d",&ptrDate->date);
-          printf("Enter a mont :");
-          scanf("%d",&ptrDate->month );
-          printf("Enter a year : ");
-          scanf("%d",&ptrDate->year);
-          
+          cout<<"Enter a date : ";
+          cin>>ptrDate->date;
+          cout<<"Enter a month :";
+          cin>>ptrDate->month ;
+          cout<<"Enter a year : ";
+          cin>>ptrDate->year;
+
 }
 void printDateOnConsole(struct Date* ptrDate){
-      
-       printf("date : %d \n",ptrDate->date);
-       printf("month: %d \n",ptrDate->month);
-       printf("year : %d \n",ptrDate->year);
+
+       cout<<"date : "<<ptrDate->date<<endl;
+       cout<<"month : "<<ptrDate->month<<endl;
+       cout<<"year : "<<ptrDate->year<<endl;
 }
 bool isLeapYear(struct Date* ptrDate){
-    
+
     if(ptrDate->year%4==0 && ptrDate->year%100!=0 || ptrDate->year%400==0)
     {
         return true;
@@ -49,24 +51,25 @@ bool isLeapYear(struct Date* ptrDate){
 
 int choice (){
 int ch;
-printf("0.Exit \n ");
-printf("1.Enter a date \n ");
-printf("2.Display a date \n ");
-printf("3.current a date \n ");
-scanf("%d",&ch);
+cout<<"0.Exit \n ";
+cout<<"1.Enter a date \n ";
+cout<<"2.Display a date \n ";
+cout<<"3.Initialize a date \n ";
+cout<<"4.Check leap year \n ";
+cin>>ch;
 return ch;
 }
 
 int main(){
-   struct Date date;
+    struct Date date{};
    int ch;
    while((ch=choice()) !=0){
-    
+
    switch(ch){
         case 1:
           acceptDateFromConsole(&date);
           break;
-        case 2: 
+        case 2:
           printDateOnConsole(&date);
         break;
         case 3:
@@ -74,21 +77,21 @@ int main(){
          break;
          case 4:
              if(isLeapYear(&date)){
-                 printf("year is leap year\n");
+                 cout<<"year is leap year\n";
              }
              else{
-                 printf("year is not leap year\n");
+                 cout<<"year is not leap year\n";
              }
+             break;
+        default:
+             cout << "Invalid choice\n";
       }
-          
-          
-         
 
-    
-}
 
-        
+
+
+
 }
 
 
-
+}
